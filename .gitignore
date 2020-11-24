@@ -1,0 +1,15 @@
+*.log
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+wp-config.php
+wp-content/*
+!wp-content/themes
+!wp-content/plugins
+xmlrpc.php
+
