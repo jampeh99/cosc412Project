@@ -12,4 +12,4 @@ wp-content/*
 !wp-content/themes
 !wp-content/plugins
 xmlrpc.php
-
+wp-content/plugins/custom-fonts
