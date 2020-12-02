@@ -15,7 +15,7 @@ class Course_Filter{
     }
 
     public function load_listing(){
-		$courses_per_page = $_POST['course_per_page'];
+		$courses_per_page = isset($_POST['course_per_page']) ? $_POST['course_per_page'] : tutils()->get_option('courses_per_page', 6);
         $page = (isset($_POST['page']) && is_numeric($_POST['page']) && $_POST['page']>0) ? $_POST['page'] : 1;
 
         // Prepare taxonomy
@@ -32,8 +32,14 @@ class Course_Filter{
         }
 
         // Prepare level and price type
+        $is_membership = get_tutor_option('monetize_by')=='pmpro' && tutils()->has_pmpro();
         $level_price=array();
         foreach(['level', 'price'] as $type){
+            
+            if($is_membership && $type=='price'){
+                continue;
+            }
+
             if(isset($_POST['tutor-course-filter-'.$type]) && count($_POST['tutor-course-filter-'.$type])>0){
                 $level_price[]=array(
                     'key' => $type=='level' ? '_tutor_course_level' : '_tutor_course_price_type',
@@ -42,7 +48,7 @@ class Course_Filter{
                 );
             }
         }
-        
+
         $args = array(
             'post_type' => 'courses',
             'posts_per_page' => $courses_per_page,
@@ -79,7 +85,7 @@ class Course_Filter{
         
 		$GLOBALS['tutor_shortcode_arg']=array(
 			'column_per_row' => $_POST['column_per_row'],
-			'course_per_page' => $_POST['course_per_page']
+			'course_per_page' => $courses_per_page
 		);
 		
         tutor_load_template('archive-course-init');

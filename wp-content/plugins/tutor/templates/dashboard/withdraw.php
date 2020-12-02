@@ -28,6 +28,15 @@ $status_message = array(
     'rejected' => __('Please contact the site administrator for more information.', 'tutor'),
     'pending' => __('Withdrawal request is pending for approval, please hold tight.', 'tutor')
 );
+
+$currency_symbol = '';
+if(function_exists('get_woocommerce_currency_symbol')){
+    $currency_symbol=get_woocommerce_currency_symbol();
+}
+else if(function_exists('edd_currency_symbol')){
+    $currency_symbol=edd_currency_symbol();
+}
+
 ?>
 
 <div class="tutor-dashboard-content-inner tutor-frontend-dashboard-withdrawal">
@@ -63,7 +72,7 @@ $status_message = array(
         <span>
             <?php
             $my_profile_url = tutor_utils()->get_tutor_dashboard_page_permalink('settings/withdraw-settings');
-            echo $withdraw_method_name ?  __(sprintf('The preferred payment method is selected as %s. ', $withdraw_method_name), 'tutor') : '';
+            echo $withdraw_method_name ?  sprintf(__('The preferred payment method is selected as %s. ', 'tutor'), $withdraw_method_name) : '';
             echo sprintf(__('You can change your %s withdrawal preference %s', 'tutor'), "<a href='{$my_profile_url}'>", '</a>');
             ?>
         </span>
@@ -119,7 +128,10 @@ $status_message = array(
                             <div class="withdraw-form-field-row">
                                 <label for="tutor_withdraw_amount"><?php _e('Amount', 'tutor') ?></label>
                                 <div class="withdraw-form-field-amount">
-                                    <span><span>$</span></span> <input type="text" name="tutor_withdraw_amount">
+                                    <span>
+                                        <span><?php echo $currency_symbol; ?></span>
+                                    </span>
+                                    <input type="number" min="1" name="tutor_withdraw_amount">
                                 </div>
                                 <div class="inline-image-text">
                                     <img src="<?php echo $image_base; ?>info-icon-question.svg" />
