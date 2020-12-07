@@ -6,9 +6,9 @@
 
 ?>
 
-<p>Hi,</p>
+<p><?php _e('Hi,', 'tutor'); ?></p>
 <p>
-    Welcome to the course <strong>{course_name}</strong> at {site_url}. You can start learning from here- 
+    <?php _e('Welcome to the course <strong>{course_name}</strong> at {site_url}. You can start learning from here-', 'tutor'); ?> 
     <br />
     {course_start_url}.
 </p>

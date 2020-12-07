@@ -6,8 +6,8 @@
 
 ?>
 
-<p> Dear {instructor_username}, </p>
+<p><?php _e('Dear {instructor_username},', 'tutor'); ?> </p>
 
 <p>
-	Unfortunately, your instructor application has been rejected. Please contact the site administrator for further information.
+	<?php _e('Unfortunately, your instructor application has been rejected. Please contact the site administrator for further information.', 'tutor'); ?>
 </p>

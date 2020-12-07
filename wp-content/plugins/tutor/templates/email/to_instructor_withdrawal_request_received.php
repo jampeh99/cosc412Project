@@ -6,8 +6,8 @@
 
 ?>
 
-<p> Dear {instructor_username}, </p>
+<p><?php _e('Dear {instructor_username},', 'tutor'); ?> </p>
 
 <p>
-	Your withdrawal request has been received. Please hold tight as the admins take a look at it.
+	<?php _e('Your withdrawal request has been received. Please hold tight as the admins take a look at it.'); ?>
 </p>

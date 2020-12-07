@@ -6,8 +6,8 @@
 
 ?>
 
-<p> Dear {instructor_username}, </p>
+<p><?php _e('Dear {instructor_username},', 'tutor'); ?> </p>
 
 <p>
-	Unfortunately, your withdrawal request has been rejected. Please contact the site admins directly for further information. 
+	<?php _e('Unfortunately, your withdrawal request has been rejected. Please contact the site admins directly for further information.', 'tutor'); ?>
 </p>

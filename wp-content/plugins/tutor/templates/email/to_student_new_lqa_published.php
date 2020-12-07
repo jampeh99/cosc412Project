@@ -6,8 +6,8 @@
 
 ?>
 
-<p> Dear {student_username}, </p>
+<p><?php _e('Dear {student_username},', 'tutor'); ?></p>
 
 <p>
-	A new {lqa_type} has been published for the course <b>{course_title}</b> called <b>{lqa_title}</b>. Go ahead and get started today!
+	<?php _e('A new {lqa_type} has been published for the course <b>{course_title}</b> called <b>{lqa_title}</b>. Go ahead and get started today!', 'tutor'); ?>
 </p>
